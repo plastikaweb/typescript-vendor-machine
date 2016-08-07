@@ -14,7 +14,7 @@
         css: {selected: $parent.selectedCell().product == $data.product,
         sold: sold}">
             <div class="col-md-6 image">
-                <img data-bind="attr: {src: product.getImageUrl(),
+                <img data-bind="attr: {src: product.category.getImageUrl(),
                 alt: product.category.name}">
             </div>
             <div class="col-md-6 productInfo">
