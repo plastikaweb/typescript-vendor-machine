@@ -1,28 +1,27 @@
 /**
  * Created by plastik on 23/7/16.
  */
-/// <reference path="coin.ts" />
-/// <reference path="products.ts" />
-/// <reference path="productFactory.ts" />
+import * as Product from './products';
+import getVendingProduct from './productFactory';
+import * as Coins from './coin';
 
-
-enum VendingMachineSize {
+export enum VendingMachineSize {
     small = 6,
     medium = 9,
     large = 12
 }
 
 class Cell {
-    constructor(public product: Product) {
+    constructor(public product: Product.Product) {
 
     }
     stock = ko.observable(3);
     sold = ko.observable(false);
 }
 
-class VendingMachine {
+export class VendingMachine {
     private paid = ko.observable(0);
-    selectedCell = ko.observable(new Cell(new CocaCola()));
+    selectedCell = ko.observable(new Cell(new Product.CocaCola()));
     cells = ko.observableArray([]);
     acceptedCoins: Coins.Coin[] = [new Coins.Dime(), new Coins.Quarter(), new Coins.Half(), new Coins.Dollar()];
     canPay = ko.pureComputed(() => this.paid() -
@@ -32,7 +31,7 @@ class VendingMachine {
         this.cells([]);
 
         for (var index = 0; index < giveSize; index++) {
-            let product = productFactory.GetProduct();
+            let product = getVendingProduct();
             this.cells.push(new Cell(product));
         }
     }

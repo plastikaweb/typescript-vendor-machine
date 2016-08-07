@@ -46,6 +46,13 @@
     data-bind="enable: canPay, click: pay">Pay</button>
 </div>
 <script src="js/lib/knockout-3.4.0.js"></script>
-<script src="js/app.js"></script>
+<script src="js/lib/require.js"></script>
+<script>
+    require(['js/vendingMachine'], function(machineModule) {
+        var machine = new machineModule.VendingMachine();
+        machine.size = machineModule.VendingMachineSize.medium;
+        ko.applyBindings(machine);
+    });
+</script>
 </body>
 </html>

@@ -17,3 +17,7 @@ class CandyBarCategory extends ProductCategory {
         return this.imgPath + 'candyBar.png';
     }
 }
+
+export {
+    ProductCategory, SodaCategory, CandyBarCategory as CBCategory
+}
