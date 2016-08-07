@@ -3,7 +3,8 @@
     "target": "es5",
     "outDir": "../js",
     "sourceMap": true,
-    "module": "amd"
+    "module": "amd",
+    "experimentalDecorators": true
   },
   "files": [
     "vendingMachine.ts",
